@@ -1,7 +1,6 @@
-
+//on install set a toggl value to false for switching the state
 chrome.runtime.onInstalled.addListener(function(){
     chrome.storage.sync.set({toggl: false}, function () {
-        console.log("Installed with the bydefault value of false");
         togglState = false;
     });
 });
@@ -16,13 +15,13 @@ chrome.storage.onChanged.addListener(function (changes, sync) {
            chrome.alarms.create("break", {delayInMinutes: 30});
        }
        if(key === 'toggl' && !keyVal.newValue){
-           console.log("clearing this alarm");
            chrome.alarms.clearAll();
        }
     }
 });
 
  //this event fires an alarm every time the time elapses as decided on the alarm creation.
+ //on break the break tab is created and on breakOver the tab is closed and alarm for next break is set.
     chrome.alarms.onAlarm.addListener(function(alarm){
         if(alarm.name === "break"){
             chrome.tabs.create({url: 'https://www.youtube.com/watch?v=dkedupX73xs', active: true}, function (tab){
