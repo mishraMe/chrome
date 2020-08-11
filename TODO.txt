@@ -1,0 +1,4 @@
+
+currently only a specific video plays via this extension - use Youtube API to put some random/semi-random video on instead
+make the window pop up instead of a tab
+if possible make window freeze other options for the time being only with a cross button on the top
