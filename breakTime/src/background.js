@@ -1,20 +1,18 @@
-//on install set a toggl value to false for switching the state
+//on install set a isOn value to false for switching the state
 chrome.runtime.onInstalled.addListener(function(){
-    chrome.storage.sync.set({toggl: false}, function () {
-        togglState = false;
-    });
+    chrome.storage.sync.set({isOn: false});
 });
 
-//this event fires everytime any of the storage values is changed. in our case toggl button.
+//this event fires every time any of the storage values is changed. in our case isOn button.
 //we need a global variable that can be modified whenever the script needs to modify next Alarm time
 
 chrome.storage.onChanged.addListener(function (changes, sync) {
     for (key in changes){
-        let keyVal = changes[key]; // returns boolean if toggl button
-       if(key === 'toggl' && keyVal.newValue){
+        let keyVal = changes[key]; // returns boolean value of toggle button
+       if(key === 'isOn' && keyVal.newValue){
            chrome.alarms.create("break", {delayInMinutes: 30});
        }
-       if(key === 'toggl' && !keyVal.newValue){
+       if(key === 'isOn' && !keyVal.newValue){
            chrome.alarms.clearAll();
        }
     }
