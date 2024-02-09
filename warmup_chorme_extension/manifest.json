@@ -1,0 +1,11 @@
+{
+  "name": "Upcoming Philadelphia Concerts",
+  "version": "1.0.0",
+  "description": "An extension to look up concerts coming to Philadelphia",
+  "manifest_version": 3,
+  "author": "Minakshi Mishra-Manning",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Upcoming Philadelphia Concerts"
+  }
+}
